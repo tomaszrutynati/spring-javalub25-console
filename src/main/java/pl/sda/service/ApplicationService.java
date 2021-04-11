@@ -11,11 +11,10 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-//@AllArgsConstructor
+@AllArgsConstructor
 public class ApplicationService {
 
     @Autowired
-    @Qualifier("collectionRepository")
     private ApplicationRepository repository;
 
     //Ten konstruktor zostanie zastapiony przez Lombok

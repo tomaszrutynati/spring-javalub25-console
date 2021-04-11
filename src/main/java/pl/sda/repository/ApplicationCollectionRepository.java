@@ -1,13 +1,14 @@
 package pl.sda.repository;
 
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-@Qualifier("collectionRepository")
+@Profile("local")
 @Repository
 public class ApplicationCollectionRepository implements ApplicationRepository {
 
