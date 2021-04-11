@@ -42,7 +42,7 @@ public class ApplicationFileRepository implements ApplicationRepository {
     private void storeChangesInFile() {
         Path path = Paths.get("C:/apps.txt");
         try (BufferedWriter writer = Files.newBufferedWriter(path, StandardOpenOption.TRUNCATE_EXISTING)) {
-            for (Application app: applications) {
+            for (Application app : applications) {
                 writer.write(app.getId() + ";" + app.getName() + ";" + app.getProducer() + ";" + app.getVersion());
                 writer.newLine();
             }
