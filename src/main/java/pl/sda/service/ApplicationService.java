@@ -1,6 +1,8 @@
 package pl.sda.service;
 
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import pl.sda.repository.Application;
 import pl.sda.repository.ApplicationRepository;
@@ -9,9 +11,11 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-@AllArgsConstructor
+//@AllArgsConstructor
 public class ApplicationService {
 
+    @Autowired
+    @Qualifier("collectionRepository")
     private ApplicationRepository repository;
 
     //Ten konstruktor zostanie zastapiony przez Lombok
