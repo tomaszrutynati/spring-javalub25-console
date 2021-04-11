@@ -3,7 +3,7 @@ package pl.sda.service;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import pl.sda.repository.Application;
-import pl.sda.repository.ApplicationRepository;
+import pl.sda.repository.ApplicationCollectionRepository;
 
 import java.util.List;
 import java.util.Optional;
@@ -12,7 +12,7 @@ import java.util.Optional;
 @AllArgsConstructor
 public class ApplicationService {
 
-    private ApplicationRepository repository;
+    private ApplicationCollectionRepository repository;
 
     //Ten konstruktor zostanie zastapiony przez Lombok
     //Jesli klasa bedaca Beanem ma tylko jeden konstruktor to nie musimy pisac nad nim Autowired
