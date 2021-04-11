@@ -2,6 +2,7 @@ package pl.sda.repository;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
 
 import javax.annotation.PostConstruct;
@@ -17,6 +18,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+@Primary
 @Repository
 public class ApplicationFileRepository implements ApplicationRepository {
 
