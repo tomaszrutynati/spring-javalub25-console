@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 @Component
 @AllArgsConstructor
-public class RemoveApplicationView {
+public class RemoveApplicationView  implements View {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(RemoveApplicationView.class);
 
@@ -27,5 +27,10 @@ public class RemoveApplicationView {
         } catch (IllegalStateException ex) {
             LOGGER.error(ex.getMessage());
         }
+    }
+
+    @Override
+    public ViewOperation supportedOperation() {
+        return ViewOperation.REMOVE;
     }
 }

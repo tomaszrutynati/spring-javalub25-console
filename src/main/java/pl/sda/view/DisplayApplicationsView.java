@@ -11,7 +11,7 @@ import java.util.List;
 
 @Component
 @AllArgsConstructor
-public class DisplayApplicationsView {
+public class DisplayApplicationsView  implements View  {
     private static final Logger LOGGER = LoggerFactory.getLogger(DisplayApplicationsView.class);
 
     private ApplicationService applicationService;
@@ -24,6 +24,11 @@ public class DisplayApplicationsView {
                 app -> LOGGER.info(String.format("%d | %s | %s | %s",
                         app.getId(), app.getProducer(), app.getName(), app.getVersion())));
 
+    }
+
+    @Override
+    public ViewOperation supportedOperation() {
+        return ViewOperation.DISPLAY_ALL;
     }
 
 }

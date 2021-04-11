@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 @Component
 @AllArgsConstructor
-public class UpdateApplicationView {
+public class UpdateApplicationView implements View  {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(UpdateApplicationView.class);
 
@@ -29,5 +29,10 @@ public class UpdateApplicationView {
         } catch (IllegalStateException ex) {
             LOGGER.error(ex.getMessage());
         }
+    }
+
+    @Override
+    public ViewOperation supportedOperation() {
+        return ViewOperation.UPDATE;
     }
 }

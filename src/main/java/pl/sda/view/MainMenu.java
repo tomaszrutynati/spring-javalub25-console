@@ -5,6 +5,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+import java.util.Optional;
 import java.util.Scanner;
 
 @Component
@@ -13,10 +15,7 @@ public class MainMenu {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(MainMenu.class);
 
-    private AddApplicationView addApplicationView;
-    private DisplayApplicationsView displayApplicationsView;
-    private RemoveApplicationView removeApplicationView;
-    private UpdateApplicationView updateApplicationView;
+    private List<View> views;
     private Scanner scanner;
 
     public void displayOnConsole() {
@@ -41,16 +40,16 @@ public class MainMenu {
 
         switch (operation) {
             case 1:
-                displayApplicationsView.displayOnConsole();
+                displayView(ViewOperation.DISPLAY_ALL);
                 break;
             case 2:
-                addApplicationView.displayOnConsole();
+                displayView(ViewOperation.ADD);
                 break;
             case 3:
-                updateApplicationView.displayOnConsole();
+                displayView(ViewOperation.UPDATE);
                 break;
             case 4:
-                removeApplicationView.displayOnConsole();
+                displayView(ViewOperation.REMOVE);
                 break;
             case 5:
                 return false;
@@ -59,5 +58,12 @@ public class MainMenu {
 
         }
         return true;
+    }
+
+    private void displayView(ViewOperation operation) {
+        views.stream()
+                .filter(view -> view.supportedOperation() == operation)
+                .findFirst()
+                .ifPresent(View::displayOnConsole);
     }
 }

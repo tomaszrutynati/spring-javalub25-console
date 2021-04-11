@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 @Component
 @AllArgsConstructor
-public class AddApplicationView {
+public class AddApplicationView implements View {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(AddApplicationView.class);
 
@@ -26,5 +26,10 @@ public class AddApplicationView {
         String version = scanner.nextLine();
 
         applicationService.addApplication(producer, name, version);
+    }
+
+    @Override
+    public ViewOperation supportedOperation() {
+        return ViewOperation.ADD;
     }
 }
