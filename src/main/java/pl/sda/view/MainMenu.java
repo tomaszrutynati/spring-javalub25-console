@@ -1,5 +1,6 @@
 package pl.sda.view;
 
+import lombok.AllArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
@@ -7,9 +8,15 @@ import org.springframework.stereotype.Component;
 import java.util.Scanner;
 
 @Component
+@AllArgsConstructor
 public class MainMenu {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(MainMenu.class);
+
+    private AddApplicationView addApplicationView;
+    private DisplayApplicationsView displayApplicationsView;
+    private RemoveApplicationView removeApplicationView;
+    private UpdateApplicationView updateApplicationView;
 
     public void displayOnConsole() {
         while (true) {
@@ -34,12 +41,16 @@ public class MainMenu {
 
         switch (operation) {
             case 1:
+                displayApplicationsView.displayOnConsole();
                 break;
             case 2:
+                addApplicationView.displayOnConsole();
                 break;
             case 3:
+                updateApplicationView.displayOnConsole();
                 break;
             case 4:
+                removeApplicationView.displayOnConsole();
                 break;
             case 5:
                 return false;
