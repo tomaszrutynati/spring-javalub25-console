@@ -15,9 +15,9 @@ public class UpdateApplicationView {
     private static final Logger LOGGER = LoggerFactory.getLogger(UpdateApplicationView.class);
 
     private ApplicationService applicationService;
+    private Scanner scanner;
 
     public void displayOnConsole() {
-        Scanner scanner = new Scanner(System.in);
         LOGGER.info("Podaj id aplikacji: ");
         Long id = scanner.nextLong();
         scanner.nextLine();

@@ -15,9 +15,9 @@ public class AddApplicationView {
     private static final Logger LOGGER = LoggerFactory.getLogger(AddApplicationView.class);
 
     private ApplicationService applicationService;
+    private Scanner scanner;
 
     public void displayOnConsole() {
-        Scanner scanner = new Scanner(System.in);
         LOGGER.info("Podaj nazwę aplikacji:");
         String name = scanner.nextLine();
         LOGGER.info("Podaj producenta aplikacji:");

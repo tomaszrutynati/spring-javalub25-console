@@ -17,6 +17,7 @@ public class MainMenu {
     private DisplayApplicationsView displayApplicationsView;
     private RemoveApplicationView removeApplicationView;
     private UpdateApplicationView updateApplicationView;
+    private Scanner scanner;
 
     public void displayOnConsole() {
         while (true) {
@@ -35,7 +36,6 @@ public class MainMenu {
     }
 
     private boolean chooseOperation() {
-        Scanner scanner = new Scanner(System.in);
         int operation = scanner.nextInt();
         scanner.nextLine();
 

@@ -15,9 +15,9 @@ public class RemoveApplicationView {
     private static final Logger LOGGER = LoggerFactory.getLogger(RemoveApplicationView.class);
 
     private ApplicationService applicationService;
+    private Scanner scanner;
 
     public void displayOnConsole() {
-        Scanner scanner = new Scanner(System.in);
         LOGGER.info("Podaj id aplikacji: ");
         Long id = scanner.nextLong();
         scanner.nextLine();
