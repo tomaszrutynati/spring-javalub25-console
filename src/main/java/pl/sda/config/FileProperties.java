@@ -9,4 +9,5 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @ConfigurationProperties(prefix = "apps")
 public class FileProperties {
     private String fileName;
+    private String charset;
 }

@@ -10,6 +10,7 @@ import javax.annotation.PostConstruct;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
+import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -37,7 +38,8 @@ public class ApplicationFileRepository implements ApplicationRepository {
     @PostConstruct
     public void postConstruct() {
         Path path = Paths.get(fileProperties.getFileName());
-        try (BufferedReader reader = Files.newBufferedReader(path)) {
+        Charset charset = Charset.forName(fileProperties.getCharset());
+        try (BufferedReader reader = Files.newBufferedReader(path, charset)) {
             List<Application> appsFromFile = reader.lines()
                     .map(line -> line.split(";"))
                     .map(fields -> new Application(Long.valueOf(fields[0]), fields[1], fields[2], fields[3]))
@@ -50,7 +52,8 @@ public class ApplicationFileRepository implements ApplicationRepository {
 
     private void storeChangesInFile() {
         Path path = Paths.get(fileProperties.getFileName());
-        try (BufferedWriter writer = Files.newBufferedWriter(path, StandardOpenOption.TRUNCATE_EXISTING)) {
+        Charset charset = Charset.forName(fileProperties.getCharset());
+        try (BufferedWriter writer = Files.newBufferedWriter(path, charset, StandardOpenOption.TRUNCATE_EXISTING)) {
             for (Application app : applications) {
                 writer.write(app.getId() + ";" + app.getName() + ";" + app.getProducer() + ";" + app.getVersion());
                 writer.newLine();
