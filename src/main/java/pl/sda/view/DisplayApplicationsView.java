@@ -11,8 +11,8 @@ import java.util.List;
 
 @Component
 @AllArgsConstructor
-public class DisplayOperationsView {
-    private static final Logger LOGGER = LoggerFactory.getLogger(DisplayOperationsView.class);
+public class DisplayApplicationsView {
+    private static final Logger LOGGER = LoggerFactory.getLogger(DisplayApplicationsView.class);
 
     private ApplicationService applicationService;
 
