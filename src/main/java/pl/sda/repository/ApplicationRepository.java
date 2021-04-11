@@ -4,6 +4,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public class ApplicationRepository {
@@ -32,4 +33,7 @@ public class ApplicationRepository {
         return applications;
     }
 
+    public Optional<Application> getApplicationById(Long id) {
+        return applications.stream().filter(app -> app.getId() == id).findFirst();
+    }
 }
