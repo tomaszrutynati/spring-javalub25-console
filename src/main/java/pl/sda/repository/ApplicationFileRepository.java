@@ -2,11 +2,9 @@ package pl.sda.repository;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Repository;
+import pl.sda.config.FileProperties;
 
 import javax.annotation.PostConstruct;
 import java.io.BufferedReader;
@@ -30,15 +28,15 @@ public class ApplicationFileRepository implements ApplicationRepository {
     private static Long ID = 0L;
     private final List<Application> applications = new ArrayList<>();
 
-    private String filePath;
+    private FileProperties fileProperties;
 
-    public ApplicationFileRepository(@Value("${apps.file}") String filePath) {
-        this.filePath = filePath;
+    public ApplicationFileRepository(FileProperties fileProperties) {
+        this.fileProperties = fileProperties;
     }
 
     @PostConstruct
     public void postConstruct() {
-        Path path = Paths.get(filePath);
+        Path path = Paths.get(fileProperties.getFileName());
         try (BufferedReader reader = Files.newBufferedReader(path)) {
             List<Application> appsFromFile = reader.lines()
                     .map(line -> line.split(";"))
@@ -51,7 +49,7 @@ public class ApplicationFileRepository implements ApplicationRepository {
     }
 
     private void storeChangesInFile() {
-        Path path = Paths.get(filePath);
+        Path path = Paths.get(fileProperties.getFileName());
         try (BufferedWriter writer = Files.newBufferedWriter(path, StandardOpenOption.TRUNCATE_EXISTING)) {
             for (Application app : applications) {
                 writer.write(app.getId() + ";" + app.getName() + ";" + app.getProducer() + ";" + app.getVersion());

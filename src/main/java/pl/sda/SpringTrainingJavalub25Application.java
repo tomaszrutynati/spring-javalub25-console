@@ -6,9 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import pl.sda.config.FileProperties;
 import pl.sda.view.MainMenu;
 
 @SpringBootApplication
+@EnableConfigurationProperties(value = {FileProperties.class})
 public class SpringTrainingJavalub25Application implements CommandLineRunner {
 
     public static final Logger LOGGER = LoggerFactory.getLogger(SpringTrainingJavalub25Application.class);
